@@ -2,16 +2,17 @@
   <div id="app">
     <h1>Witaj w systemie zapisów na zajęcia</h1>
       <div v-if="!isAuthenticated">
-        Zaloguj się e-mailem:<input type="email" v-model="email"><button @click="login()">Zaloguj</button>
+        Zaloguj się e-mailem:<input type="email" v-model="email"><button @click="logIn()">Zaloguj</button>
       </div>
       <div v-else>
-        Witaj {{email}}<button @click="logout()">Wyloguj</button>
+        Witaj {{email}}<button @click="logOut()">Wyloguj</button>
     </div>
   </div>
 </template>
 
 
 <script>
+import "milligram";
 export default {
   name: 'app',
   data () {
@@ -21,10 +22,10 @@ export default {
     }
   },
   methods: {
-    login() {
+    logIn() {
       this.isAuthenticated = true
     },
-    logout() {
+    logOut() {
       this.isAuthenticated = false
     }
   }
