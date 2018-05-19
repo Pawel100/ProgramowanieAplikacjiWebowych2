@@ -1,35 +1,34 @@
 <template>
   <div id="app">
-    <h1>Twój e-mail to {{ email.length}}</h1>
-    <input type="email" v-model="email">
-    <h1>Twój e-mail to {{ email.toLowerCase() }}</h1>
-    
-    <div v-if="email.length < 10">Ale masz krótki adres!</div>
-    <div v-else-if="email.length < 15">Twój adres e-mail jest w sam raz.</div>
-    <div v-else>Twój adres e-mail jest stanowczo za długi.</div>
-
-    <button @click="alertMyEmail()">Wyświetl mój e-mail w alercie</button>
-
-
+    <h1>Witaj w systemie zapisów na zajęcia</h1>
+      <div v-if="!isAuthenticated">
+        Zaloguj się e-mailem:<input type="email" v-model="email"><button @click="login()">Zaloguj</button>
+      </div>
+      <div v-else>
+        Witaj {{email}}<button @click="logout()">Wyloguj</button>
+    </div>
   </div>
-
-  
 </template>
+
 
 <script>
 export default {
-  name: "app",
-  data() {
+  name: 'app',
+  data () {
     return {
-      email: "test@test.com"
-    };
+      email: '',
+      isAuthenticated: false
+    }
   },
   methods: {
-  alertMyEmail() {
-    alert(this.email);
+    login() {
+      this.isAuthenticated = true
+    },
+    logout() {
+      this.isAuthenticated = false
+    }
   }
 }
-};
 </script>
 
 <style lang="scss">
