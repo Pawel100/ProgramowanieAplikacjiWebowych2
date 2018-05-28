@@ -5,10 +5,12 @@
       <div class="float-right"><button class="button button-outline" @click="logout()">Wychodzę</button></div>
     </div>
     <hr>
+    <meeting-page :user="user"/>
   </div>
 </template>
 
 <script>
+import MeetingPage from "./MeetingPage";
   export default {
     props: ['user'],
     data () {
@@ -20,6 +22,8 @@
         this.$emit('logout');
       }
     },
-  }
+    components: {
+      MeetingPage}
+    }
 </script>
 
