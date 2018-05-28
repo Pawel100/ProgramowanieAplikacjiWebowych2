@@ -1,8 +1,15 @@
 <template>
     <div>
        <h2>Zajęcia</h2>
-       <new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
-       <meetings-list :meetings="meetings"></meetings-list>
+       <new-meeting-form 
+       @added="addNewMeeting($event)">
+       </new-meeting-form>
+       
+       <meetings-list 
+       :meetings="meetings"
+       :user="user"
+       @removed="removeMeeting($event)">>
+       </meetings-list>
     </div>
 </template>
 
@@ -20,6 +27,11 @@ export default {
   methods: {
       addNewMeeting(meeting) {
           this.meetings.push(meeting);
+      },
+      removeMeeting(meeting) {
+        this.meetings = this.meetings.filter((event) => {
+          return event !== meeting;
+        });
       }
   }
 }
