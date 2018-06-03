@@ -8,6 +8,7 @@
        <meetings-list 
        :meetings="meetings"
        :user="user"
+       @subscribe="addParticipant($event)"
        @removed="removeMeeting($event)">>
        </meetings-list>
     </div>
@@ -19,6 +20,7 @@ import MeetingsList from "./MeetingsList";
 
 export default {
   components: {NewMeetingForm, MeetingsList},
+  props: ['user'],
   data() {
       return {
           meetings: []
@@ -32,7 +34,10 @@ export default {
         this.meetings = this.meetings.filter((event) => {
           return event !== meeting;
         });
-      }
+      },
+      addParticipant(meeting) {
+        meeting.participants.push(this.user);
+      },
   }
 }
 </script>

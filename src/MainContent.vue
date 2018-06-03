@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import MeetingPage from "./MeetingPage";
+  import MeetingPage from "./MeetingPage";
   export default {
     props: ['user'],
     data () {
